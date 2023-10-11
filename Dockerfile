@@ -1,15 +1,13 @@
-FROM golang:1.21-alpine3.18 AS builder
+FROM golang:1.21-alpine
 
-RUN mkdir /app
-ADD . /app
-COPY .env /app/
+COPY . /app
+
 WORKDIR /app
-RUN go clean --modcache
-RUN go build -o main
 
-FROM alpine:3.18
-WORKDIR /root/
-COPY --from=builder /app/main .
-COPY --from=builder /app/.env .
+RUN go mod tidy
+
+RUN go build -o app .
+
 EXPOSE 8080
-CMD ["./main"]
+
+CMD ["/app/app"]
