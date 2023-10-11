@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    image: arieflazuardi/mvc-api:1.0.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: arief_altadb
+    ports:
+      - "3306:3306"
