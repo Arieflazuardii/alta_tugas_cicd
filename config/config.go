@@ -4,20 +4,13 @@ import (
 	"fmt"
 	"os"
 	"praktikum/models"
-
-	"github.com/joho/godotenv"
+	
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
 
-func LoadEnv() {
-	err := godotenv.Load()
-	if err != nil {
-		panic(err)
-	}
-}
 
 func InitDB() {
 	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local",
