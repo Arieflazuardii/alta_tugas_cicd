@@ -8,7 +8,6 @@ import (
 
 
 func main() {
-  config.LoadEnv()
   config.InitDB()
   // create a new echo instance
   e := routes.New()
